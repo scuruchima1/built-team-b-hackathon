@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Flask App</h1>
+    </header>
+
+    <main>
+        <h2>Plot Results</h2>
+        <form action="/plot" method="POST">
+            <label for="parameter">Select Parameter:</label>
+            <select name="parameter" id="parameter">
+                <option value="RH2M">Relative Humidity at 2 Meters</option>
+                <option value="T2M_MAX">Max Temperature at 2 Meters</option>
+                <option value="PRECTOTCORR">Precipitation Corrected</option>
+            </select>
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if plot_path %}
+            <h3>Generated Plot:</h3>
+            <img src="{{ plot_path }}" alt="Plot Image">
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Flask App</p>
+    </footer>
+</body>
+</html>
