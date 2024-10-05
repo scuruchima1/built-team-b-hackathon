@@ -1,10 +1,12 @@
-import 'bootstrap/dist/css/bootstrap.css';  // Import Bootstrap CSS for styling
-import React from 'react';  // Import React
-import ReactDOM from 'react-dom/client';  // Import ReactDOM for rendering
-import { BrowserRouter as Router } from 'react-router-dom';  // Import Router from React Router
-import './index.css';  // Import global styles
-import App from './App';  // Import the main App component
-import reportWebVitals from './reportWebVitals';  // Import performance measurement function
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// Put any other imports below so that CSS from your
+// components takes precedence over default styles.
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));  // Create a root element for rendering
 root.render(
