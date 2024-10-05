@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
-import './filter.css'; // Import your custom CSS file
+import './countyfilter.css'; // Import your custom CSS file
 
-const Filter = () => {
+const CountyFilter = () => {
     const [selectedItem, setSelectedItem] = useState("Select a County");
 
     const handleSelect = (eventKey) => {
@@ -132,4 +132,4 @@ const Filter = () => {
     );
 };
 
-export default Filter;
+export default CountyFilter;

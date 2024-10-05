@@ -11,9 +11,10 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));  // Create a root element for rendering
 root.render(
   <React.StrictMode>
-    <Router>  // Wrap the App component in Router to enable routing
+    {/* <Router>  // Wrap the App component in Router to enable routing
       <App />  // Render the main App component
-    </Router>
+    </Router> */}
+    <App/>
   </React.StrictMode>
 );
 

@@ -3,8 +3,12 @@
     flex-direction: row; 
     align-items: center; 
     justify-content: center;
-    width: 300px;
-    border: 20px;
-    padding: 50px;
+
+    padding: 30px;
     margin: auto;
   }
+
+.leaflet-container {
+    height: 600px; /* You can adjust height */
+    width: 100%; 
+}

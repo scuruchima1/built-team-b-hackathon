@@ -1,10 +1,13 @@
 .block-header {
-    background-color: #f8d8c2;     /* Black background */
-    color: black;                /* White text */
+    background-color: #d3966e;     /* Black background */
+    color: white;                /* White text */
     padding: 20px 0;             /* Vertical padding for spacing */
     text-align: center;          /* Center the text */
     font-family: "Patua One", serif;
     font-weight: 800;
     font-style: normal;         /* Set to bold (700 weight) */
-    margin: 0;                   /* Remove margin */
+    background-image: url('/public/corn.png');
+    background-position-y: -480px;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
 }
