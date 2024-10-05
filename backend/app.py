@@ -14,7 +14,7 @@ def agro_conditions():  # Function that handles requests to this route
     return jsonify({"condition": "optimal", "temperature": "20°C", "humidity": "60%"})  # Return sample data as JSON
 
 # Read the data from the CSV file
-df = pd.read_csv('POWER_Regional_Monthly_1992_2022.csv')
+df = pd.read_csv('POWER_Regional_Monthly_1992_2022.csv', index_col=False)
 
 
 @app.route('/')
@@ -23,10 +23,13 @@ def home():
 
 @app.route('/plot', methods=['POST'])
 def plot():
-    parameter = request.form['parameter']  # Get user-selected parameter from form
+    latitude = request.form['latitude']  # Get user-provided latitude from form
+    longitude = request.form['longitude']  # Get user-provided longitude from form
+    year = request.form['year']  # Optionally get user-provided year from form
+    param = request.form.get('param')  # Optionally get user-provided parameter from form
 
-    plot_path = process_data(df, parameter)  # Process the data and create the plot
-    return render_template('plot.html', plot_path=plot_path)
+    plot_path = process_data(df, latitude, longitude, year, param=None)  # Process the data and create the plot
+    return render_template('/templates/plot.html', plot_path=plot_path)
 
 
 if __name__ == '__main__':  # Check if the script is being run directly

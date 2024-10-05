@@ -37,16 +37,57 @@ PRECTOTCORR_SUM     MERRA-2 Precipitation Corrected Sum (mm)
 -END HEADER-
 '''
 
-
-def process_data(df, month, year):
+def process_data(df, lon, lat, year, param=None,):
     """
     Filters on the month or year and plots the selected parameter.
 
     Args:
         df (DataFrame): The full dataset as a DataFrame.
-        parameter (str): The parameter to filter and plot (e.g., 'RH2M', 'T2M_MAX').
+        lon (float): The longitude to filter by.
+        lat (float): The latitude to filter by.
+        year (int, optional): The year to filter by.
     """
 
-    return 
+    # Filter the data based on the user-provided latitude and longitude
+    filtered_df = df[(df['LAT'] == float(lat)) & (df['LON'] == float(lon))]
 
+    # Filter the data based on the user-provided year if provided
+    if year:
+        filtered_df = filtered_df[filtered_df['YEAR'] == year]
 
+    # Months to be used as labels
+    months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+    params = ['RH2M', 'T2M_MAX', 'PRECTOTCORR', 'PRECTOTCORR_SUM']
+
+    if param:
+        params = [param]
+
+    plt.figure()
+    # Flattening the data for scatter plot
+    for param in params:
+        cur_df = filtered_df[filtered_df["PARAMETER"] == param]
+        y_values = []
+        x_values = []
+        for month in months:
+            y_values += [month] * len(cur_df)
+            x_values += cur_df[month].tolist()
+            
+        plt.plot(y_values, x_values, label=param)
+
+        plt.legend()
+
+    print(filtered_df)
+
+    plt.xlabel('Month')
+    plt.ylabel('Value')
+    plt.title('Monthly Data')
+    plt.legend()
+    plt.grid(True)
+
+    # Save the plot to a bytes object
+    img = io.BytesIO() 
+    plt.savefig(img, format="png")
+    plt.close()
+
+    # Return the path to the plot
+    return base64.b64encode(img.getvalue()).decode()
