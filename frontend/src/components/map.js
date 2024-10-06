@@ -18,10 +18,10 @@ const addMarginOfError = (latitude, longitude, margin = 0.01) => {
     return [newLatitude, newLongitude];
 };
 
-const DisplayMap = () => {
+const DisplayMap = ({ setLatitude, setLongitude }) => {
     const [geoData, setGeoData] = useState(null);
-    const [latitude, setLatitude] = useState(40.0); // Default center latitude
-    const [longitude, setLongitude] = useState(-89.0); // Default center longitude
+    const [latitude, setObjLatitude] = useState(40.0); // Default center latitude
+    const [longitude, setObjLongitude] = useState(-89.0); // Default center longitude
     const position = [latitude, longitude]; // Center of Illinois
 
     // Fetch the GeoJSON data when the component loads
@@ -41,23 +41,12 @@ const DisplayMap = () => {
         fillOpacity: 0.1,
     };
 
-    // Function to handle mouseover events and show popup
-    const onEachFeature = (feature, layer) => {
-        layer.on({
-            mouseover: (e) => {
-                const { name } = feature.properties; // Assuming the property name holds the county name
-                const layer = e.target;
-                layer.bindPopup(`<strong>${name}</strong>`).openPopup();
-            },
-            mouseout: (e) => {
-                e.target.closePopup();
-            },
-        });
-    };
 
     const LocationMarker = () => { 
         useMapEvents({
             click(e) {
+                setObjLatitude(e.latlng.lat);
+                setObjLongitude(e.latlng.lng);
                 setLatitude(e.latlng.lat);
                 setLongitude(e.latlng.lng);
             },
@@ -91,15 +80,10 @@ const DisplayMap = () => {
                     <GeoJSON 
                         data={geoData} 
                         style={style} 
-                        onEachFeature={onEachFeature} 
                     />
                 )}
                 <LocationMarker />
             </MapContainer>
-            <div>
-                <p>Latitude: {latitude}</p>
-                <p>Longitude: {longitude}</p>
-            </div>
         </div>
     );
 };

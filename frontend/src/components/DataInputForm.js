@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import DisplayMap from "./map";
 
-function DataInputForm() {
-    const [latitude, setLatitude] = useState('');
-    const [longitude, setLongitude] = useState('');
+const DataInputForm = ({ longitude, latitude }) => {
+    // const [latitude, setLatitude] = useState('');
+    // const [longitude, setLongitude] = useState('');
     const [year, setYear] = useState('');
     const [param, setParam] = useState('');
     const [errorMessage, setErrorMessage] = useState('');  // State for Error Message
@@ -50,8 +50,8 @@ function DataInputForm() {
     const handleClear = async () => {
         try {
             await axios.post('http://127.0.0.1:5000/clear_plot');
-            setLatitude('');
-            setLongitude('');
+            // setLatitude('');
+            // setLongitude('');
             setYear('');
             setParam('');
             setPlotUrl('');
@@ -65,14 +65,14 @@ function DataInputForm() {
     return (
     <div>
         <form onSubmit={handleSubmit}>
-        <label>
+        {/* <label>
             Latitude:
             <input type="text" value={latitude} onChange={(e) => setLatitude(e.target.value)} />
         </label>
         <label>
             Longitude:
             <input type="text" value={longitude} onChange={(e) => setLongitude(e.target.value)} />
-        </label>
+        </label> */}
         <label>
             Year:
             <input type="text" value={year} onChange={(e) => setYear(e.target.value)} />

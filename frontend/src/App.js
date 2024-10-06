@@ -37,8 +37,10 @@ function App() {  // Define the functional component named App
     return (
         <div className="App">
             <Header />
+            <h1>lat:{latitude}</h1>
+            <h1>long:{longitude}</h1>
             <DisplayMap setLatitude={setLatitude} setLongitude={setLongitude} />
-            <DataInputForm onPlotGenerated={handlePlotGenerated} latitude={latitude} longitude={longitude} />
+            <DataInputForm latitude={latitude} longitude={longitude} />
             {plotPath && (
                 <div>
                     <h2>Generated Plot:</h2>
