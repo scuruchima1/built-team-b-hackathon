@@ -36,3 +36,27 @@
     transform: rotate(360deg);
   }
 }
+
+.App .nav-links {
+  display: flex;
+  height: 60px;
+  justify-content: flex-end; /* Align items to the right */
+  align-items: center;
+  background-color: #4b2308;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  gap: 10px; /* Add space between links */
+}
+
+.App .nav-links a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent or specify a color */
+  padding: 5px 5px; /* Add padding to create a box effect */
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
+  cursor: pointer; /* Change cursor to pointer */
+  background-color: #d3bfb2;
+
+  &:hover {
+    color: #ffffff; /* Change text color on hover */
+  }
+}
