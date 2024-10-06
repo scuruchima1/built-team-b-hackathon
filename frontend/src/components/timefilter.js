@@ -3,11 +3,12 @@ import { Dropdown } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
 import './timefilter.css'; // Import your custom CSS file
 
-const TimeFilter = () => {
+const TimeFilter = ({ onTimeSelect }) => {
     const [selectedItem, setSelectedItem] = useState("Select a time frame");
 
     const handleSelect = (eventKey) => {
         setSelectedItem(eventKey);
+        onTimeSelect(eventKey);
     };
 
     const times = [

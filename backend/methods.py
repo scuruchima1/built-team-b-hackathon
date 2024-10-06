@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import pandas as pd
 import glob
@@ -88,7 +90,7 @@ def process_data(df, lon, lat, year, param=None,):
             
         plt.plot(y_values, x_values, label=param)
 
-        plt.legend()
+        # plt.legend()
 
     print(filtered_df)
 

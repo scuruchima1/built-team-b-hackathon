@@ -8,6 +8,7 @@ import DataInputForm from './components/DataInputForm';
 import axios from 'axios';  // Import axios for making API requests
 
 function App() {  // Define the functional component named App
+    // Plot
     const [plotPath, setPlotPath] = useState(null);
     const [latitude, setLatitude] = useState(null);
     const [longitude, setLongitude] = useState(null);
@@ -15,6 +16,23 @@ function App() {  // Define the functional component named App
     const handlePlotGenerated = (path) => {
         setPlotPath(path);
     };
+
+    // County filter
+    const [selectedCounty, setSelectedCounty] = useState(null);
+
+    const handleCountySelect = (county) => {
+        const parsedCountyData = JSON.parse(county);
+        setSelectedCounty(parsedCountyData.county);
+        setLatitude(parsedCountyData.coords[0])
+        setLongitude(parsedCountyData.coords[1])
+    };
+
+    // Time filter
+    const [selectedTimeframe, setSelectedTimeframe] = useState(null);
+
+    const handleTimeframeSelect = (timeframe) => {
+        setSelectedTimeframe(timeframe);
+    }
 
     return (
         <div className="App">
@@ -28,10 +46,10 @@ function App() {  // Define the functional component named App
                 </div>
             )}
             <div className="TimeFilter">
-                <TimeFilter />
+                <TimeFilter onTimeSelect={handleTimeframeSelect}/>
             </div>
             <div className="CountyFilter">
-                <CountyFilter />
+                <CountyFilter onCountySelect={handleCountySelect} />
             </div>
         </div>
     );
