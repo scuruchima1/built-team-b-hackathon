@@ -48,13 +48,13 @@ button {
     padding: 10px 15px; /* Padding for buttons */
     border-radius: 5px; /* Rounded corners */
     border: none; /* Remove border */
-    background-color: #007BFF; /* Button background color */
+    background-color: #7cc1aa; /* Button background color */
     color: white; /* Text color */
     cursor: pointer; /* Pointer cursor on hover */
 }
 
 button:hover {
-    background-color: #0056b3; /* Darker color on hover */
+    background-color: #588C8E; /* Darker color on hover */
 }
 
 .error-message {

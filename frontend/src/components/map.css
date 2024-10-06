@@ -1,69 +1,65 @@
 .displayMap {
   display: flex; 
-  flex-direction: column; /* Stack the title and map */
+  flex-direction: column; 
   align-items: center; 
-  justify-content: center; /* Center all content */
-
+  justify-content: center; 
   padding: 30px;
-  margin: auto; /* Center in larger screens */
+  margin: auto; 
 }
 
 .coordinates {
-  display: flex; /* Use flexbox for side-by-side layout */
-  justify-content: space-between; /* Space between labels */
-  width: 100%; /* Full width to ensure alignment */
-  max-width: 400px; /* Optional: Limit the maximum width */
-  background-color: #D5E6EB; /* Background color for the rounded box */
-  border-radius: 10px; /* Rounded corners */
-  padding: 10px; /* Padding inside the box */
-  margin-bottom: 10px; /* Space between coordinates and map */
+  display: flex; 
+  justify-content: space-between; 
+  width: 100%; 
+  max-width: 400px; 
+  background-color: #D5E6EB; 
+  border-radius: 10px; 
+  padding: 10px; 
+  margin-bottom: 10px; 
 }
 
 .coordinates-labels {
-  display: flex; /* Flexbox for labels */
-  flex-direction: column; /* Stack labels vertically */
-  align-items: flex-start; /* Align labels to the start */
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start; 
 }
 
 .coordinates-values {
-  display: flex; /* Flexbox for values */
-  flex-direction: column; /* Stack values vertically */
-  align-items: flex-start; /* Align values to the start */
+  display: flex; 
+  flex-direction: column; 
+  align-items: flex-start; 
 }
 
 .coordinates p {
-  margin: 0; /* Remove margin */
+  margin: 0; 
 }
 
 .coordinates .label {
-  font-weight: bold; /* Make text bold */
-  color: black; /* Set text color to black */
+  font-weight: bold; 
+  color: black; 
 }
 
 .coordinates .value {
-  color: #C87957; /* Set coordinates color */
+  color: #C87957; 
 }
 
-/* Adjustments for the map container */
 .leaflet-container {
-  height: 500px; /* Keep this or adjust if needed */
-  width: 50%; /* Make it half the width on larger screens */
-  border-radius: 15px; /* Rounded corners */
-  overflow: hidden; /* Ensure content does not overflow the rounded corners */
-  border: 4px solid #E8E3D1; /* Border around the map */
- box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow for depth */
+  height: 500px; 
+  width: 50%; 
+  border-radius: 15px; 
+  overflow: hidden; 
+  border: 4px solid #E8E3D1; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
-
-/* Media query for smaller screens */
-@media (max-width: 800px) { /* Adjust the max-width as needed */
+@media (max-width: 800px) {
   .displayMap {
-      flex-direction: column; /* Stack items vertically */
-      align-items: center; /* Center items */
+      flex-direction: column; 
+      align-items: center; 
   }
 
   .leaflet-container {
-      width: 90%; /* Make it take up 90% of the screen width on smaller screens */
-      height: 50vh; /* Adjust height to 40% of the viewport height for smaller screens */
+      width: 90%; 
+      height: 50vh; 
   }
 }

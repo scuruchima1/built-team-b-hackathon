@@ -28,12 +28,6 @@ function App() {
         setLongitude(parsedCountyData.coords[1]);
     };
 
-    const [selectedTimeframe, setSelectedTimeframe] = useState(null);
-
-    const handleTimeframeSelect = (timeframe) => {
-        setSelectedTimeframe(timeframe);
-    };
-
     return (
         <Router>
             <div className="App">
@@ -53,9 +47,6 @@ function App() {
                                 <img src={`data:image/png;base64,${plotPath}`} alt="Generated Plot" />
                             </div>
                         )}
-                        <div className="TimeFilter">
-                            <TimeFilter onTimeSelect={handleTimeframeSelect}/>
-                        </div>
                         <div className="CountyFilter">
                             <CountyFilter onCountySelect={handleCountySelect} />
                         </div>

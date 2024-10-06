@@ -44,6 +44,14 @@ PRECTOTCORR_SUM     MERRA-2 Precipitation Corrected Sum (mm)
 -END HEADER-
 '''
 
+def round_coord(x):
+    if x % 1 < 0.25:
+        return int(x) + 0.25
+    elif x % 1 < 0.75:
+        return int(x) + 0.75
+    else:
+        return int(x) + 1.25
+
 def process_data(df, lon, lat, year, param=None,):
     """
     Filters on the month or year and plots the selected parameter.
@@ -62,7 +70,12 @@ def process_data(df, lon, lat, year, param=None,):
     except ValueError:
         print("Invalid data types for latitude, longitude, or year.")
         return None
+    
+    lon = round_coord(lon)
+    lat = round_coord(lat)
 
+    print(lat)
+    print(lon)
 
     # Filter the data based on the user-provided latitude and longitude
     filtered_df = df[(df['LAT'] == float(lat)) & (df['LON'] == float(lon))]
@@ -75,22 +88,24 @@ def process_data(df, lon, lat, year, param=None,):
     months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
     params = ['RH2M', 'T2M_MAX', 'PRECTOTCORR', 'PRECTOTCORR_SUM']
 
+    print(param)
+
     if param:
         params = [param]
 
     plt.figure()
     # Flattening the data for scatter plot
-    for param in params:
-        cur_df = filtered_df[filtered_df["PARAMETER"] == param]
+    for param_iter in params:
+        cur_df = filtered_df[filtered_df["PARAMETER"] == param_iter]
         y_values = []
         x_values = []
         for month in months:
             y_values += [month] * len(cur_df)
             x_values += cur_df[month].tolist()
             
-        plt.plot(y_values, x_values, label=param)
+        plt.plot(y_values, x_values, label=param_iter)
 
-        # plt.legend()
+        plt.legend()
 
     print(filtered_df)
 
@@ -108,7 +123,10 @@ def process_data(df, lon, lat, year, param=None,):
     clear_old_plots(static_dir)
 
     # Save the plot as an image file
+    print(param)
+    
     plot_filename = f'{param}_plot.png'
+    print(plot_filename)
     plot_path = os.path.join(static_dir, plot_filename)
     plt.savefig(plot_path, bbox_inches='tight')
     plt.close()
