@@ -40,6 +40,9 @@ function App() {
                         <>
                         <Weather longitude={longitude} latitude={latitude}/>
                         <DisplayMap longitude={longitude} latitude={latitude} setLatitude={setLatitude} setLongitude={setLongitude} />
+                        <div className="CountyFilter">
+                            <CountyFilter onCountySelect={handleCountySelect} />
+                        </div>
                         <DataInputForm latitude={latitude} longitude={longitude} />
                         {plotPath && (
                             <div>
@@ -47,9 +50,6 @@ function App() {
                                 <img src={`data:image/png;base64,${plotPath}`} alt="Generated Plot" />
                             </div>
                         )}
-                        <div className="CountyFilter">
-                            <CountyFilter onCountySelect={handleCountySelect} />
-                        </div>
                         </>
                     } />
                 </Routes>
