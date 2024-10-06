@@ -1,33 +1,70 @@
-# Project Overview
+# Getting Started with Create React App
 
-Farmers face significant water-related challenges, such as unpredictable weather, droughts, floods, pests, and diseases. These issues can severely affect crop health, reduce farmers' profits, and threaten food security. Our application helps farmers predict and manage water-related risks by providing real-time, accurate information about soil water content, allowing them to make informed decisions about irrigation, fertilization, and pest management.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# Problem Statement
+## Available Scripts
 
-Farmers need a tool to predict and manage water risks to safeguard their crops and maximize yields. Effective decision-making on irrigation, fertilization, and pest control depends on knowing the water content in the soil. Without timely and accurate data, these decisions become difficult, impacting overall crop health.
+In the project directory, you can run:
 
-# Solution
+### `npm start`
 
-This web application displays a map of Illinois with county boundaries. Users can select their county, year, and a specific parameter they want to visualize. The tool then generates a plot showing the parameter data for the chosen county and year. Farmers can use this data to optimize irrigation, manage fertilization schedules, and control pests, all while maximizing their profits and improving food security.
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-# Key Features
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-Interactive Map: Displays Illinois county boundaries.
-User Input: Allows users to select a county, year, and specific parameter for analysis.
-Visualization: Generates plots of soil-related parameters, helping farmers make better irrigation and crop management decisions.
-How to Run the Application
+### `npm test`
 
-Clone the repository.
-Run the backend server (details can be added here for setup).
-Start the React frontend.
-Select your county, year, and parameter from the dropdown menus.
-Click "Generate Plot" to view the data visualization.
-Technologies Used
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-Frontend: React
-Backend: Flask
-Data Handling: Axios for API calls
-Future Enhancements
+### `npm run build`
 
-Expand the application to include other states.
-Add additional parameters to give farmers even more decision-making power.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
