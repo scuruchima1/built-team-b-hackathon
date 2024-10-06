@@ -1,13 +1,49 @@
 .block-header {
-    background-color: #d3966e;     /* Black background */
-    color: white;                /* White text */
-    padding: 20px 0;             /* Vertical padding for spacing */
-    text-align: center;          /* Center the text */
-    font-family: "Patua One", serif;
-    font-weight: 800;
-    font-style: normal;         /* Set to bold (700 weight) */
+    background-color: #d3966e;
+    color: white;
+    padding: 20px 0;
+    text-align: left;
+    font-family: "Caudex", serif;
+    font-weight: 700;
     background-image: url('/public/corn.png');
     background-position-y: -480px;
     background-repeat: no-repeat;
     background-attachment: scroll;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title {
+    text-decoration: none;
+    color: white;
+    font-size: 2rem;
+    padding: 5px 20px;
+}
+
+.header-title:hover {
+    text-decoration: underline;
+}
+
+.App .nav-links {
+    padding: 5px 50px;
+}
+
+.App .nav-links a {
+    text-decoration: none;
+    color: inherit;
+    background: none;
+    padding: 0;
+    transition: color 0.3s ease;
+    cursor: pointer;
+}
+
+.App .nav-links a:hover,
+.App .nav-links a:focus {
+    color: #ffffff;
+}
+
+.App .nav-links a:active,
+.active-link {
+    text-decoration: underline;
 }

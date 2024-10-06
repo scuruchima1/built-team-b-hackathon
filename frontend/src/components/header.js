@@ -1,11 +1,19 @@
 import React from 'react';
-import './header.css'; // Assuming you'll have some styles for the header
+import { NavLink } from 'react-router-dom'; // Import NavLink for active styling
+import './header.css';
 
 const Header = () => {
     return (
         <div>
             <header className="block-header">
-                <h1>AgriVision</h1>
+                <NavLink to="/" className="header-title" activeClassName="active-link">
+                    AgriVision
+                </NavLink>
+                <nav className="nav-links">
+                    <NavLink to="/about" activeClassName="active-link">
+                        About
+                    </NavLink>
+                </nav>
             </header>
         </div>
     );

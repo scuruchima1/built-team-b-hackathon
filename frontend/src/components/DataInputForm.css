@@ -1,0 +1,41 @@
+.data-input-form {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center align items */
+    max-width: 600px; /* Limit maximum width for better alignment */
+    margin: 20px auto; /* Center container with margin */
+}
+
+.data-input-form label {
+    display: flex;
+    flex-direction: column; /* Stack label and input vertically */
+    margin-bottom: 15px; /* Space between form elements */
+}
+
+.data-input-form input,
+.data-input-form select {
+    padding: 8px; /* Add some padding */
+    margin-top: 5px; /* Space between label and input/select */
+    border-radius: 5px; /* Rounded corners */
+    border: 1px solid #ccc; /* Border style */
+    width: 100%; /* Full width */
+}
+
+button {
+    margin: 5px; /* Space between buttons */
+    padding: 10px 15px; /* Padding for buttons */
+    border-radius: 5px; /* Rounded corners */
+    border: none; /* Remove border */
+    background-color: #007BFF; /* Button background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker color on hover */
+}
+
+.error-message {
+    color: red; /* Error message color */
+    margin-top: 10px; /* Space above error message */
+}

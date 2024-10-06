@@ -63,10 +63,14 @@ const DisplayMap = ({ latitude, longitude, setLatitude, setLongitude }) => {
                 }}
             />
         ) : null;
-    };
-
-    return (
+    };return (
         <div className="displayMap">
+            <div className="coordinates">
+                <p className="label">Latitude:</p>
+                <p className="value">{latitude}</p>
+                <p className="label">Longitude:</p>
+                <p className="value">{longitude}</p>
+            </div>
             <MapContainer center={position} zoom={6} className="leaflet-container">
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -82,6 +86,8 @@ const DisplayMap = ({ latitude, longitude, setLatitude, setLongitude }) => {
             </MapContainer>
         </div>
     );
+    
+    
 };
 
 export default DisplayMap;

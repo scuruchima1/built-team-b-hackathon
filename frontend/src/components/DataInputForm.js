@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import DisplayMap from "./map";
+import CountyFilter from "./countyfilter"; // Import the CountyFilter component
+import TimeFilter from "./timefilter"; // Import the TimeFilter component
+import './DataInputForm.css'; // Add your CSS file for styling
 
 const DataInputForm = ({ longitude, latitude }) => {
     // const [latitude, setLatitude] = useState('');
@@ -36,9 +38,7 @@ const DataInputForm = ({ longitude, latitude }) => {
             }
 
             const response = await axios.post('http://127.0.0.1:5000/plot', formData, {
-                headers: { 'Content-Type':  'multipart/form-data' 
-
-                },
+                headers: { 'Content-Type':  'multipart/form-data' },
             });
             setPlotUrl(response.data.plot_url);
         } catch (error) {
@@ -54,9 +54,9 @@ const DataInputForm = ({ longitude, latitude }) => {
             // setLongitude('');
             setYear('');
             setParam('');
-            setPlotUrl('');
+            setPlotUrl(null);
             setErrorMessage('');
-        } catch(error) {
+        } catch (error) {
             console.error('Error clearing form: ', error);
             setErrorMessage('Error clearing form. Please try again.');
         }
@@ -65,14 +65,6 @@ const DataInputForm = ({ longitude, latitude }) => {
     return (
     <div>
         <form onSubmit={handleSubmit}>
-        {/* <label>
-            Latitude:
-            <input type="text" value={latitude} onChange={(e) => setLatitude(e.target.value)} />
-        </label>
-        <label>
-            Longitude:
-            <input type="text" value={longitude} onChange={(e) => setLongitude(e.target.value)} />
-        </label> */}
         <label>
             Year:
             <input type="text" value={year} onChange={(e) => setYear(e.target.value)} />
@@ -101,4 +93,3 @@ const DataInputForm = ({ longitude, latitude }) => {
 };
 
 export default DataInputForm;
-
