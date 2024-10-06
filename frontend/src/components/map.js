@@ -10,6 +10,14 @@ const icon = new L.Icon({
     iconAnchor: [12, 41],
 });
 
+
+const addMarginOfError = (latitude, longitude, margin = 0.01) => {
+    const randomOffset = () => (Math.random() - 0.5) * margin * 2;
+    const newLatitude = latitude + randomOffset();
+    const newLongitude = longitude + randomOffset();
+    return [newLatitude, newLongitude];
+};
+
 const DisplayMap = () => {
     const [geoData, setGeoData] = useState(null);
     const [latitude, setLatitude] = useState(40.0); // Default center latitude
