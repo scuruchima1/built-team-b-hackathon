@@ -67,9 +67,9 @@ const DisplayMap = ({ latitude, longitude, setLatitude, setLongitude }) => {
         <div className="displayMap">
             <div className="coordinates">
                 <p className="label">Latitude:</p>
-                <p className="value">{latitude}</p>
+                <p className="value">{latitude.toFixed(4)}</p>
                 <p className="label">Longitude:</p>
-                <p className="value">{longitude}</p>
+                <p className="value">{longitude.toFixed(4)}</p>
             </div>
             <MapContainer center={position} zoom={6} className="leaflet-container">
                 <TileLayer
