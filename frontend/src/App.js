@@ -53,7 +53,6 @@ function App() {  // Define the functional component named App
                     } />
                     <Route path="/" element={
                         <>
-                        <PrecipitationForecast />
                         <Weather longitude={longitude} latitude={latitude}/>
                         <DisplayMap longitude={longitude} latitude={latitude} setLatitude={setLatitude} setLongitude={setLongitude} />
                         <DataInputForm latitude={latitude} longitude={longitude} />
