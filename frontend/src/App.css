@@ -58,4 +58,34 @@
   &:hover {
     color: #ffffff; /* Change text color on hover */
   }
+
+}
+
+
+/* App.css */
+.main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input-weather-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px; /* Limit the width for better alignment */
+  margin: 20px; /* Add some margin */
+}
+
+.data-input-form {
+  flex: 1; /* Allow it to grow */
+  margin-right: 20px; /* Space between input form and weather */
+}
+
+.weather-info {
+  flex: 0 0 300px; /* Fixed width for the weather box */
+  border: 1px solid #ccc; /* Add border for distinction */
+  border-radius: 8px; /* Rounded corners */
+  padding: 10px; /* Add some padding */
+  background-color: #f9f9f9; /* Light background */
 }

@@ -1,6 +1,6 @@
 .data-input-form {
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
+    flex-direction: column; /* Stack elements vertically by default */
     align-items: center; /* Center align items */
     max-width: 600px; /* Limit maximum width for better alignment */
     margin: 20px auto; /* Center container with margin */
@@ -19,6 +19,28 @@
     border-radius: 5px; /* Rounded corners */
     border: 1px solid #ccc; /* Border style */
     width: 100%; /* Full width */
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column; /* Stack inputs by default */
+    width: 100%; /* Full width */
+}
+
+.input-group label {
+    flex: 1; /* Allow labels to take equal space */
+}
+
+/* Media query for larger screens */
+@media (min-width: 600px) {
+    .input-group {
+        flex-direction: row; /* Side-by-side on larger screens */
+        justify-content: space-between; /* Space between elements */
+    }
+
+    .input-group label {
+        flex: 0 0 48%; /* Set a basis for side-by-side layout */
+    }
 }
 
 button {

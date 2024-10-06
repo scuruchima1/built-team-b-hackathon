@@ -5,8 +5,6 @@ import TimeFilter from "./timefilter"; // Import the TimeFilter component
 import './DataInputForm.css'; // Add your CSS file for styling
 
 const DataInputForm = ({ longitude, latitude }) => {
-    // const [latitude, setLatitude] = useState('');
-    // const [longitude, setLongitude] = useState('');
     const [year, setYear] = useState('');
     const [param, setParam] = useState('');
     const [errorMessage, setErrorMessage] = useState('');  // State for Error Message
@@ -14,9 +12,7 @@ const DataInputForm = ({ longitude, latitude }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        // Clear any existing error message
-        setErrorMessage('');
+        setErrorMessage(''); // Clear any existing error message
 
         // Validate latitude and longitude bounds
         if (parseFloat(latitude) < -90 || parseFloat(latitude) > 90) {
@@ -27,7 +23,7 @@ const DataInputForm = ({ longitude, latitude }) => {
             setErrorMessage('Longitude must be between -180 and 180.');
             return;
         }
-        
+
         try {
             const formData = new FormData();
             formData.append('latitude', latitude);
@@ -38,7 +34,7 @@ const DataInputForm = ({ longitude, latitude }) => {
             }
 
             const response = await axios.post('http://127.0.0.1:5000/plot', formData, {
-                headers: { 'Content-Type':  'multipart/form-data' },
+                headers: { 'Content-Type': 'multipart/form-data' },
             });
             setPlotUrl(response.data.plot_url);
         } catch (error) {
@@ -50,8 +46,6 @@ const DataInputForm = ({ longitude, latitude }) => {
     const handleClear = async () => {
         try {
             await axios.post('http://127.0.0.1:5000/clear_plot');
-            // setLatitude('');
-            // setLongitude('');
             setYear('');
             setParam('');
             setPlotUrl(null);
@@ -61,34 +55,38 @@ const DataInputForm = ({ longitude, latitude }) => {
             setErrorMessage('Error clearing form. Please try again.');
         }
     };
-    
+
     return (
-    <div>
-        <form onSubmit={handleSubmit}>
-        <label>
-            Year:
-            <input type="text" value={year} onChange={(e) => setYear(e.target.value)} />
-        </label>
-        <label>
-            Parameter (optional):
-            <select value={param} onChange={(e) => setParam(e.target.value)}>
-                <option value="">Select a parameter</option>
-                <option value="RH2M">Relative Humidity at 2 Meters (%)</option>
-                <option value="T2M_MAX">Temperature at 2 meters max (C)</option>
-                <option value="PRECTOTCORR">Precipitation Corrected (mm)</option>
-                <option value="PRECTOTCORR_SUM">Precipitation Corrected Sum (mm/day)</option>
-            </select>
-        </label>
-        <button type="submit">Generate Plot</button>
-        <button type='button' onClick={handleClear}>Clear</button>
-        </form>
-        {plotUrl && (
         <div>
-            <h2>Generated Plot</h2>
-            <img src={plotUrl} alt="Generated Plot" />
+            <form onSubmit={handleSubmit} className="data-input-form">
+                <div className="input-group">
+                    <label>
+                        Year:
+                        <input type="text" value={year} onChange={(e) => setYear(e.target.value)} />
+                    </label>
+                    <label>
+                        Parameter (optional):
+                        <select value={param} onChange={(e) => setParam(e.target.value)}>
+                            <option value="">Select a parameter</option>
+                            <option value="RH2M">Relative Humidity at 2 Meters (%)</option>
+                            <option value="T2M_MAX">Temperature at 2 meters max (C)</option>
+                            <option value="PRECTOTCORR">Precipitation Corrected (mm)</option>
+                            <option value="PRECTOTCORR_SUM">Precipitation Corrected Sum (mm/day)</option>
+                        </select>
+                    </label>
+                </div>
+                <div className="spacer"></div> {}
+                <button type="submit">Generate Plot</button>
+                <button type='button' onClick={handleClear}>Clear</button>
+                {errorMessage && <div className="error-message">{errorMessage}</div>} {/* Display error message */}
+            </form>
+            {plotUrl && (
+                <div>
+                    <h2>Generated Plot</h2>
+                    <img src={plotUrl} alt="Generated Plot" />
+                </div>
+            )}
         </div>
-        )}
-    </div>
     );
 };
 

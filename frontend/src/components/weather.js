@@ -1,4 +1,3 @@
-// WeatherComponent.js
 import React, { useState, useEffect } from 'react';
 
 const Weather = ({ latitude, longitude }) => {
@@ -62,13 +61,10 @@ const Weather = ({ latitude, longitude }) => {
     const latestForecast = weatherData.properties.periods[0];
 
     return (
-        <div>
+        <div className="weather-info">
             <h3>{latestForecast.name} in {city}, {state}</h3>
-            {/* <img src={latestForecast.icon} alt={latestForecast.shortForecast} /> */}
-            {/* <p><strong>Forecast:</strong> {latestForecast.detailedForecast}</p> */}
             <p><strong>Temperature:</strong> {latestForecast.temperature}°{latestForecast.temperatureUnit}</p>
             <p><strong>Wind Speed:</strong> {latestForecast.windSpeed} {latestForecast.windDirection}</p>
-
         </div>
     );
 };
