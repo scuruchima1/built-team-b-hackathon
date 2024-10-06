@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import { MapContainer, TileLayer, GeoJSON, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON,useMapEvents, Marker } from 'react-leaflet';
+import L from 'leaflet'; 
 import 'leaflet/dist/leaflet.css';
 import './map.css';
 
+const icon = new L.Icon({
+    iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+});
+
 const DisplayMap = () => {
     const [geoData, setGeoData] = useState(null);
-    const position = [40.0, -89.0]; // Center of Illinois
+    const [latitude, setLatitude] = useState(40.0); // Default center latitude
+    const [longitude, setLongitude] = useState(-89.0); // Default center longitude
+    const position = [latitude, longitude]; // Center of Illinois
 
     // Fetch the GeoJSON data when the component loads
     useEffect(() => {
@@ -38,6 +47,31 @@ const DisplayMap = () => {
         });
     };
 
+    const LocationMarker = () => { 
+        useMapEvents({
+            click(e) {
+                setLatitude(e.latlng.lat);
+                setLongitude(e.latlng.lng);
+            },
+        });
+        return latitude && longitude ? (
+            <Marker 
+                position={[latitude, longitude]} 
+                icon={icon}
+                draggable={true}
+                eventHandlers={{
+                    dragend: (e) => {
+                        const marker = e.target;
+                        const position = marker.getLatLng();
+                        setLatitude(position.lat);
+                        setLongitude(position.lng);
+                    
+                    },
+                }}
+            />
+        ) : null;
+    };
+
     return (
         <div className="displayMap">
             <MapContainer center={position} zoom={6} className="leaflet-container">
@@ -52,7 +86,12 @@ const DisplayMap = () => {
                         onEachFeature={onEachFeature} 
                     />
                 )}
+                <LocationMarker />
             </MapContainer>
+            <div>
+                <p>Latitude: {latitude}</p>
+                <p>Longitude: {longitude}</p>
+            </div>
         </div>
     );
 };

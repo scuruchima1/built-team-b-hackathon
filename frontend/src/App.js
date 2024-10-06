@@ -8,8 +8,9 @@ import DataInputForm from './components/DataInputForm';
 import axios from 'axios';  // Import axios for making API requests
 
 function App() {  // Define the functional component named App
-
     const [plotPath, setPlotPath] = useState(null);
+    const [latitude, setLatitude] = useState(null);
+    const [longitude, setLongitude] = useState(null);
 
     const handlePlotGenerated = (path) => {
         setPlotPath(path);
@@ -18,8 +19,8 @@ function App() {  // Define the functional component named App
     return (
         <div className="App">
             <Header />
-            <DisplayMap />
-            <DataInputForm onPlotGenerated={handlePlotGenerated} />
+            <DisplayMap setLatitude={setLatitude} setLongitude={setLongitude} />
+            <DataInputForm onPlotGenerated={handlePlotGenerated} latitude={latitude} longitude={longitude} />
             {plotPath && (
                 <div>
                     <h2>Generated Plot:</h2>
