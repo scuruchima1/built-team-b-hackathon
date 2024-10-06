@@ -22,3 +22,24 @@
     background-color: #cb8f67;
   
 }
+
+.about-container .crop-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+
+}
+
+.about-container .crop-list button {
+    background-color: #d3bfb2;
+
+    transition: transform 0.3s ease-in-out;
+}
+
+.about-container .crop-list button:hover {
+    transform: translateY(-5px);
+
+}
+

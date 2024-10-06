@@ -30,7 +30,7 @@ const About = () => {
         },
         {
             name: 'Soybeans',
-            image: '/Soybeans.jpg',
+            image: '/Soybean.jpg',
             description: 'Soybeans are a versatile crop that can be used for food, animal feed, and industrial products.',
             tips: {
                 pestManagement: 'Watch for aphids and soybean loopers. Use resistant varieties and crop rotation to manage pests.',
@@ -50,6 +50,7 @@ const About = () => {
         },
         {
             name: 'Hay',
+            image : '/Hay.jpg',
             description: 'Hay is a forage crop that is used to feed livestock.',
             tips: {
                 pestManagement: 'Check for pests like alfalfa weevils and grasshoppers. Implement timely harvests to avoid infestations.',
@@ -110,18 +111,21 @@ const About = () => {
                     </p>
                 </div>
             </section>
-            <div className="crop-list">
-                {crops.map((crop) => (
-                    <button key={crop.name} onClick={() => openModal(crop)} className="crop-button">
-                        {crop.name}
-                    </button>
-                ))}
-            </div>
-            <CropModal 
-                isOpen={modalIsOpen}
-                crop={selectedCrop}
-                onRequestClose={closeModal}
-            />
+
+            <section className="Crops">
+                <div className="crop-list">
+                    {crops.map((crop) => (
+                        <button key={crop.name} onClick={() => openModal(crop)} className="crop-button">
+                            {crop.name}
+                        </button>
+                    ))}
+                </div>
+                <CropModal 
+                    isOpen={modalIsOpen}
+                    crop={selectedCrop}
+                    onRequestClose={closeModal}
+                />
+            </section>
         </div>
     );
 };
