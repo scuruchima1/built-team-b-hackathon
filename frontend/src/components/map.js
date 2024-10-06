@@ -18,10 +18,8 @@ const addMarginOfError = (latitude, longitude, margin = 0.01) => {
     return [newLatitude, newLongitude];
 };
 
-const DisplayMap = ({ setLatitude, setLongitude }) => {
+const DisplayMap = ({ latitude, longitude, setLatitude, setLongitude }) => {
     const [geoData, setGeoData] = useState(null);
-    const [latitude, setObjLatitude] = useState(40.0); // Default center latitude
-    const [longitude, setObjLongitude] = useState(-89.0); // Default center longitude
     const position = [latitude, longitude]; // Center of Illinois
 
     // Fetch the GeoJSON data when the component loads
@@ -45,8 +43,6 @@ const DisplayMap = ({ setLatitude, setLongitude }) => {
     const LocationMarker = () => { 
         useMapEvents({
             click(e) {
-                setObjLatitude(e.latlng.lat);
-                setObjLongitude(e.latlng.lng);
                 setLatitude(e.latlng.lat);
                 setLongitude(e.latlng.lng);
             },
