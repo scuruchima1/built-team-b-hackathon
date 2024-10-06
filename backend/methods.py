@@ -1,8 +1,7 @@
-from flask import Flask, request, render_template
 import matplotlib.pyplot as plt
 import pandas as pd
-import io
-import base64
+import glob
+import os
 
 def agroConditions():
     # Replace with your logic to determine conditions
@@ -20,6 +19,12 @@ def agroConditions():
 # post_body = /2024-10-05T00:00:00Z/t_2m:F/40.111514410606915,-88.21970775284188/html #Example, shows weather in urbana roughly at my 
 
 # read the data into a pandas dataframe
+
+
+def clear_old_plots(static_dir):
+    files = glob.glob(os.path.join(static_dir, '*.png'))
+    for f in files:
+        os.remove(f)
 
 '''
 -BEGIN HEADER-
@@ -47,6 +52,15 @@ def process_data(df, lon, lat, year, param=None,):
         lat (float): The latitude to filter by.
         year (int, optional): The year to filter by.
     """
+
+    try:
+        lon = float(lon)
+        lat = float(lat)
+        year = int(year)
+    except ValueError:
+        print("Invalid data types for latitude, longitude, or year.")
+        return None
+
 
     # Filter the data based on the user-provided latitude and longitude
     filtered_df = df[(df['LAT'] == float(lat)) & (df['LON'] == float(lon))]
@@ -84,10 +98,21 @@ def process_data(df, lon, lat, year, param=None,):
     plt.legend()
     plt.grid(True)
 
-    # Save the plot to a bytes object
-    img = io.BytesIO() 
-    plt.savefig(img, format="png")
+    # Ensure the static directory exists
+    static_dir = os.path.join(os.path.dirname(__file__), 'static')
+    os.makedirs(static_dir, exist_ok=True)
+
+     # Clear old plots
+    clear_old_plots(static_dir)
+
+    # Save the plot as an image file
+    plot_filename = f'{param}_plot.png'
+    plot_path = os.path.join(static_dir, plot_filename)
+    plt.savefig(plot_path, bbox_inches='tight')
     plt.close()
 
-    # Return the path to the plot
-    return base64.b64encode(img.getvalue()).decode()
+    return plot_filename
+
+
+    # # Return the path to the plot
+    # return base64.b64encode(img.getvalue()).decode()
