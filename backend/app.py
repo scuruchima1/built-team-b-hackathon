@@ -23,13 +23,14 @@ def home():
 
 @app.route('/plot', methods=['POST'])
 def plot():
-    latitude = request.form['latitude']  # Get user-provided latitude from form
-    longitude = request.form['longitude']  # Get user-provided longitude from form
-    year = request.form['year']  # Optionally get user-provided year from form
-    param = request.form.get('param')  # Optionally get user-provided parameter from form
+    data = request.json
+    latitude = data['latitude']  # Get user-provided latitude from form
+    longitude = data['longitude']  # Get user-provided longitude from form
+    year = data['year']  # Get user-provided year from form 
+    param = data.get('param') # Get user-provided parameter from form if available
 
     plot_path = process_data(df, latitude, longitude, year, param=None)  # Process the data and create the plot
-    return render_template('/templates/plot.html', plot_path=plot_path)
+    return jsonify({"plot_path": plot_path})  # Return the path to the plot as JSON
 
 
 if __name__ == '__main__':  # Check if the script is being run directly

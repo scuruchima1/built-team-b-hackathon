@@ -4,18 +4,33 @@ import DisplayMap from './components/map';
 import Header from './components/header'
 import CountyFilter from './components/countyfilter'
 import TimeFilter from './components/timefilter'
+import DataInputForm from './components/DataInputForm';
+import axios from 'axios';  // Import axios for making API requests
 
 function App() {  // Define the functional component named App
 
-    return (  // Render the main UI
-        <div className="App"> 
-            <Header/>
-            <DisplayMap/>
+    const [plotPath, setPlotPath] = useState(null);
+
+    const handlePlotGenerated = (path) => {
+        setPlotPath(path);
+    };
+
+    return (
+        <div className="App">
+            <Header />
+            <DisplayMap />
+            <DataInputForm onPlotGenerated={handlePlotGenerated} />
+            {plotPath && (
+                <div>
+                    <h2>Generated Plot:</h2>
+                    <img src={`data:image/png;base64,${plotPath}`} alt="Generated Plot" />
+                </div>
+            )}
             <div className="TimeFilter">
-                <TimeFilter/>
+                <TimeFilter />
             </div>
             <div className="CountyFilter">
-                <CountyFilter/>
+                <CountyFilter />
             </div>
         </div>
     );
